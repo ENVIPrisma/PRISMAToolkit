@@ -1,0 +1,80 @@
+{
+    "name": "SentinelEsaHubDownload",
+    "base_class": "ENVIAbortableTaskFromProcedure",
+    "routine": "ENVI_SentinelHubDownload",
+    "display_name": "Download Sentinel ESAHUB products",
+    "description": "This task returns a list of products downloades URL",
+    "schema": "envitask_3.2",
+    "revision": "1.0.0",
+    "parameters": [
+        {
+            "name": "HUB_LOGIN",
+            "display_name": "EsaHub Credentials",
+            "type": "ORDEREDHASH",
+            "direction": "INPUT",
+            "required": true,
+            "description": "A hash of key-value pairs indicating login details.",
+            "default": {
+                "fold_case": true,
+                "elements": {
+                    "USERNAME": {
+                        "type": "STRING",
+                        "dehydratedForm": "sgagliano"
+                    },
+                    "PASSWORD": {
+                        "type": "STRING",
+                        "dehydratedForm": "123pippo"
+                    }
+                 }
+             }
+        },
+        {
+            "name": "INPUT_DATA_LINK",
+            "keyword": "INPUT_DATA_LINK",
+            "display_name": "Array of IDL_SentinelHubData",
+            "type": "IDL_SentinelHubDataArray",
+            "dimensions": "[*]",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the input json file list of SentineHubData."
+        },
+        {
+            "name": "PREVIEW_ONLY",
+            "keyword": "PREVIEW_ONLY",
+            "display_name": "Only Preview",
+            "type": "Boolean",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify.",
+            "default": false
+        },    
+        {
+            "name": "UNZIP_PRODUCT",
+            "keyword": "UNZIP_PRODUCT",
+            "display_name": "Uncompress (.zip)",
+            "type": "Boolean",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify..",
+            "default": true
+        },    
+        {
+            "name": "OUTPUT_FOLDER",
+            "display_name": "Output Download Folder",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": true,
+            "is_directory": true,
+            "description": "This is."
+        },
+        {
+            "name": "OUTPUT_FILENAMES",
+            "display_name": "Output URI",
+            "type": "ENVIURIArray",
+            "dimensions": "[*]",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is the output filename."
+        }
+    ]
+}

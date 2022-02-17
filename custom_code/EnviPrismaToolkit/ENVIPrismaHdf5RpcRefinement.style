@@ -1,0 +1,25 @@
+{
+  "schema": "envitask_3.2",
+  "show_preview": false,
+  "parameters": [
+  	{
+      "name": "INPUT_FILENAME",
+      "type": "EnviURI_UI",
+      "keywords": {
+				"BOTTOM_LABEL": "L2B or L2C products only.",
+				"FILTER": "*.he5"
+			}
+    },
+    {
+      "name": "SCIHUB_PASSWORD",
+      "type": "IDLPassword_UI"
+    },
+    {
+      "name": "FORCE_DOWNLOAD",
+      "type": "IDLBool_UI",
+      "keywords": {
+				"BOTTOM_LABEL": "Search near present dates in ESA Hub catalog."
+			}
+    }
+  ]
+}

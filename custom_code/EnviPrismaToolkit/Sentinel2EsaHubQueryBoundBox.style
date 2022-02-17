@@ -1,0 +1,23 @@
+{
+    "schema": "envitask_3.0",
+	"show_preview": false, 	
+	"show_display_result": false,
+    "parameters": [        
+		{
+            "name": "HUB_LOGIN",
+            "type": "IDLOrderedHash_UI"
+        },
+        {
+            "name": "SUB_RECT",
+            "type": "IDLBoundingBox_UI"
+		},
+        {
+            "name": "SENSING_DATE_START",
+            "type": "ENVITimePair_UI"
+        },
+        {
+            "name": "SENSING_DATE_STOP",
+            "type": "ENVITimePair_UI"
+        }     
+    ]
+}

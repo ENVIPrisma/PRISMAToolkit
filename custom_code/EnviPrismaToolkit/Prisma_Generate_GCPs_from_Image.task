@@ -1,0 +1,172 @@
+{
+    "base_class": "ENVIMETATASK",
+    "display_name": "PRISMA Generate GCPs from Reference Image",
+    "description": "This is an ENVI Metatask",
+    "schema": "envitask_3.3",
+    "revision": "1.0.0",
+    "commute_on_downsample": "Unknown",
+    "commute_on_subset": "Unknown",
+    "name": "PRISMA_Generate_GCPs_from_Image",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "display_name": "Input Raster",
+            "type": "ENVIRASTER",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a raster on which to generate GCPs.",
+            "hidden": false,
+            "allow_null": false
+        },
+        {
+            "name": "INPUT_REFERENCE_RASTER",
+            "display_name": "Input Reference Raster",
+            "type": "ENVIRASTER",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a reference image from which to match and find the geographic coordinates of the GCPs.",
+            "hidden": false,
+            "allow_null": false
+        },
+        {
+            "name": "INPUT_DEM_RASTER",
+            "display_name": "Input DEM Raster",
+            "type": "ENVIRASTER",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a digital elevation model (DEM) raster. The elevation values of GCPs are calculated using the DEM raster. If you do not have a DEM file readily available, you can use the global DEM named GMTED2010.jp2 that is provided with your ENVI installation. The Global Multi-resolution Terrain Elevation Data 2010 (GMTED2010) dataset has a mean resolution of 30 arc seconds. A DEM raster with higher resolution is preferred.",
+            "hidden": false,
+            "allow_null": false
+        },
+        {
+            "name": "DEM_IS_HEIGHT_ABOVE_ELLIPSOID",
+            "display_name": "DEM is Height above Ellipsoid",
+            "type": "BOOLEAN",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Set this property to true if the DEM is already expressed as the height above the ellipsoid and no geoid correction is required.",
+            "hidden": false,
+            "default": false,
+            "allow_cast": true,
+            "allow_string": true
+        },
+        {
+            "name": "REQUESTED_NUMBER_OF_GCPS",
+            "display_name": "Requested Number of GCPs",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify the requested number of GCPs.",
+            "hidden": false,
+            "default": 121,
+            "inclusive_max": true,
+            "inclusive_min": true,
+            "test_exact": false,
+            "test_overflow": true
+        },
+		    {
+            "name": "ERROR_THRESHOLD",
+            "display_name": "Maximum Allowable Error per Tie Point",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Maximum Allowable Error per Tie Point",
+            "hidden": false,
+            "default": 5,
+            "inclusive_max": true,
+            "inclusive_min": true,
+            "test_exact": false,
+            "test_overflow": true
+        },
+        {
+            "name": "SEARCH_WINDOW",
+            "display_name": "Search Window Size",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify the search window size. Increase the value if there is a big misalignment between the input raster and the reference raster.",
+            "hidden": false,
+            "default": 255,
+            "inclusive_max": true,
+            "inclusive_min": true,
+            "test_exact": false,
+            "test_overflow": true
+        },
+        {
+            "name": "OUTPUT_GCPS_URI",
+            "display_name": "Output GCPs URI",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify a string with the fully-qualified path and filename for OUTPUT_GCPS.",
+            "hidden": false,
+            "auto_extension": ".pts",
+            "fold_case": true,
+            "is_directory": false,
+            "is_temporary": true
+        },
+        {
+            "name": "DAG",
+            "type": "ENVIMETATASKDAG",
+            "direction": "INPUT",
+            "required": true,
+            "description": "This is the graph that describes the metatask.",
+            "hidden": true,
+            "default": {
+                "task_1": {
+                    "name": "GenerateTiePointsByCrossCorrelationWithOrthorectification",
+                    "external_input": {
+                        "input_raster1": "INPUT_REFERENCE_RASTER",
+                        "input_raster2": "INPUT_RASTER",
+                        "input_dem_raster": "INPUT_DEM_RASTER",
+                        "no_geoid_correction": "DEM_IS_HEIGHT_ABOVE_ELLIPSOID",
+                        "requested_number_of_tiepoints": "REQUESTED_NUMBER_OF_GCPS",
+                        "search_window": "SEARCH_WINDOW"
+                    },
+					"static_input": {
+                        "interest_operator": "Forstner"
+                    }
+                },
+                "task_2": {
+                    "name": "FilterTiePointsByGlobalTransformWithOrthorectification",
+                    "external_input": {
+						"error_threshold": "ERROR_THRESHOLD"
+                    },
+                    "internal_input": {
+                        "input_tiepoints": "task_1.output_tiepoints",
+                        "input_orthorectified_tiepoints": "task_1.output_orthorectified_tiepoints"
+                    },
+                    "static_input": {
+                        "fitting_transform": "RST"
+                    },
+                    "output": {
+                    }
+                },
+                "task_3": {
+                    "name": "GenerateGCPsFromTiePoints",
+                    "external_input": {
+                        "input_dem_raster": "INPUT_DEM_RASTER",
+                        "dem_is_height_above_ellipsoid": "DEM_IS_HEIGHT_ABOVE_ELLIPSOID",
+                        "output_gcps2_uri": "OUTPUT_GCPS_URI"
+                    },
+                    "internal_input": {
+                        "input_tiepoints": "task_2.output_tiepoints"
+                    },
+                    "output": {
+                        "output_gcps2": "OUTPUT_GCPS"
+                    }
+                }
+            }
+        },
+		{
+            "name": "OUTPUT_GCPS",
+            "keyword": "OUTPUT_GCPS_URI",
+            "display_name": "Output GCPs",
+            "type": "ENVIGCPSet",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to the output GCPs.",
+            "uri_param": "OUTPUT_GCPS_URI"
+        }
+    ]
+}

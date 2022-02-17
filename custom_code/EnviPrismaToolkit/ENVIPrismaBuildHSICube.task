@@ -1,0 +1,51 @@
+{
+    "name": "ENVIPrismaBuildHSICube",
+    "base_class": "ENVIAbortableTaskFromProcedure",
+    "routine": "ENVIBuildPrismaHSICube",
+    "display_name": "PRISMA HSI Cube for Atmospheric Correction",
+    "description": "This task builds the HSI Cube from PRISMA VNIR and SWIR",
+    "schema": "envitask_3.3",
+    "tags": ["ENVI", "Utilities"],
+    "revision": "1.0.0",
+    "commute_on_downsample": "No",
+    "commute_on_subset": "No",
+    "parameters": [
+        {
+            "name": "VNIR_RASTER",
+            "display_name": "Input VNIR Raster",
+            "type": "ENVIRaster",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the raster that contains the VNIR bands."
+        },
+        {
+            "name": "SWIR_RASTER",
+            "display_name": "Input SWIR Raster",
+            "type": "ENVIRaster",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the raster that contains the SWIR bands."
+        },
+        {
+            "name": "OUTPUT_RASTER_URI",
+            "keyword": "OUTPUT_URI",
+            "display_name": "Output Raster URI",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify a string with the fully qualified filename and path of the associated OUTPUT_RASTER. If you do not specify this property, or set it to an exclamation symbol (!), a temporary file will be created.",
+            "auto_extension": ".dat",
+            "fold_case": true,
+            "is_temporary": true
+        },
+        {
+            "name": "OUTPUT_RASTER",
+            "display_name": "Output Raster",
+            "type": "ENVIRaster",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to the output raster of filetype ENVI.",
+            "uri_param": "OUTPUT_RASTER_URI"
+        }
+    ]
+}

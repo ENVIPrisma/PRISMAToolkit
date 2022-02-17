@@ -1,0 +1,13 @@
+{
+    "schema": "envitask_3.3",
+	"show_preview": false,
+	"parameters": [
+		{
+	      "name": "INPUT_RASTER",
+	      "type": "ENVIRaster_UI",
+	      "keywords": {
+					"BOTTOM_LABEL": "L1B with GLT or L2 products."
+				}
+	    }  
+	]
+}

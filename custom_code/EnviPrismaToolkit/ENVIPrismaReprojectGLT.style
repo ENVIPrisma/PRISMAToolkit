@@ -1,0 +1,13 @@
+{
+    "schema": "envitask_3.3",
+    "show_preview": false,
+	"parameters": [
+        {
+			"name": "INPUT_URI",
+			"type": "ENVIURI_UI",
+			"keywords": {
+				"FILTER": "*.he5"
+			}
+		}
+	]
+}

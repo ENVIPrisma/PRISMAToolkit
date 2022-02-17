@@ -1,0 +1,157 @@
+{
+    "name": "ENVIPrismaHdf5RpcRefinement",
+    "base_class": "ENVITaskFromProcedure",
+    "routine": "Prisma_RPCCoefficients_Refinement",
+    "display_name": "PRISMA HDF5 RPC Refinement",
+    "description": "PRISMA refinement of the RPC coefficients using a geolocated image as a reference.",
+    "schema": "envitask_3.3",
+    "revision": "1.0.0",
+    "commute_on_downsample": "Unknown",
+    "commute_on_subset": "Unknown",
+    "parameters": [
+        {
+            "name": "INPUT_FILENAME",
+            "display_name": "Input PRISMA [.he5]",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the input PRISMA file.",
+            "hidden": false,
+            "fold_case": false,
+            "is_temporary": false
+        },
+        {
+            "name": "INPUT_REFERENCE",
+            "display_name": "Input Reference Image",
+            "type": "ENVIRASTER",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify a raster as reference image.",
+            "hidden": false,
+            "allow_null": false
+        },
+        {
+            "name": "CLEARSKY_THRESHOLD",
+            "display_name": "Percentage of Clear Sky",
+            "type": "DOUBLE",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Percentage of clear sky in reference image over Prisma image",
+            "hidden": false,
+            "default": 70.0,
+            "inclusive_max": true,
+            "inclusive_min": true
+        },
+        {
+            "name": "FORCE_DOWNLOAD",
+            "display_name": "Force Download",
+            "type": "Boolean",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Force Download of Reference Image.",
+            "default": false
+        },
+        {
+            "name": "SCIHUB_USERNAME",
+            "display_name": "SciHub Username",
+            "type": "STRING",
+            "direction": "INPUT",
+            "required": false,
+            "description": "SciHub Username.",
+            "hidden": false,
+            "fold_case": true
+        },
+        {
+            "name": "SCIHUB_PASSWORD",
+            "display_name": "SciHub Password",
+            "type": "STRING",
+            "direction": "INPUT",
+            "required": false,
+            "description": "SciHub password.",
+            "hidden": false,
+            "fold_case": true
+        },
+        {
+            "name": "REQUESTED_NUMBER_OF_GCPS",
+            "display_name": "Requested Number of GCPs",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify the requested number of GCPs.",
+            "hidden": true,
+            "default": 40,
+            "inclusive_max": true,
+            "inclusive_min": true,
+            "test_exact": false,
+            "test_overflow": true
+        },
+        {
+            "name": "SEARCH_WINDOW",
+            "display_name": "Search Window Size",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify the search window size. Increase the value if there is a big misalignment between the input raster and the reference raster.",
+            "hidden": true,
+            "default": 351,
+            "inclusive_max": true,
+            "inclusive_min": true,
+            "test_exact": false,
+            "test_overflow": true
+        },
+		    {
+            "name": "ERROR_THRESHOLD",
+            "display_name": "Maximum Allowable Error per Tie Point",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Maximum Allowable Error per Tie Point",
+            "hidden": true,
+            "default": 5,
+            "inclusive_max": true,
+            "inclusive_min": true,
+            "test_exact": false,
+            "test_overflow": true
+        },    
+		    {
+            "name": "OUTPUT_REFERENCE",
+            "display_name": "Output Reference Raster",
+            "type": "ENVIRASTER",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "The Raster used to refine the RPC Coeff",
+            "hidden": false,
+            "allow_null": false
+        },
+        {
+            "name": "OUTPUT_SWIR",
+            "display_name": "Output SWIR Raster",
+            "type": "ENVIRASTER",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "The input raster with new RPCs set",
+            "hidden": false,
+            "allow_null": false
+        },
+        {
+            "name": "OUTPUT_VNIR",
+            "display_name": "Output VNIR Raster",
+            "type": "ENVIRASTER",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "The input raster with new RPCs set",
+            "hidden": false,
+            "allow_null": false
+        },
+        {
+            "name": "OUTPUT_PAN",
+            "display_name": "Output Panchromatic Raster",
+            "type": "ENVIRASTER",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "The input raster with new RPCs set",
+            "hidden": false,
+            "allow_null": false
+        }
+	]
+}

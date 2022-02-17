@@ -1,0 +1,38 @@
+{
+    "name": "ENVIPrismaRPCInfill",
+    "base_class": "ENVITaskFromProcedure",
+    "routine": "ENVIPrismaRPCInfill",
+    "display_name": "PRISMA Inherit RPC Coefficients from Raster",
+    "description": "Load Prisma RPC Refined Coefficients from Raster",
+    "schema": "envitask_3.3",
+    "tags": ["ENVI", "Utilities"],
+    "revision": "1.0.0",
+    "commute_on_downsample": "No",
+    "commute_on_subset": "No",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "display_name": "PRISMA Raster",
+            "type": "ENVIRaster",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the raster that contains the VNIR bands."
+        },
+        {
+            "name": "INPUT_RPC_RASTER",
+            "display_name": "PRISMA Raster with RPCs",
+            "type": "ENVIRaster",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the input HDF5 file that contains the geometry information."
+        },
+		    {
+					"name": "OUTPUT_RASTER",
+					"display_name": "Output Raster",
+					"type": "ENVIRaster",
+					"direction": "OUTPUT",
+					"required": true,
+					"description": "This is a reference to the output raster."
+				}
+    ]
+}

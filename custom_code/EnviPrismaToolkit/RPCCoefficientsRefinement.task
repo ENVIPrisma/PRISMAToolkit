@@ -1,0 +1,54 @@
+{
+    "name": "RPCRefinement",
+    "base_class": "ENVITaskFromProcedure",
+    "routine": "envi_rpc_compute_refinement",
+    "display_name": "RPC Coefficients Refinement",
+    "description": "This task do RPC refinement using an EnviGCPset in input",
+    "schema": "envitask_3.3",
+    "tags": ["ENVI", "Raster Operations"],
+    "revision": "1.0.0",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "display_name": "Input Raster",
+            "type": "ENVIRaster",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a Prisma raster on which to perform RPC refinement."
+        },
+       	{
+            "name": "INPUT_GCP",
+            "display_name": "Input GCP",
+            "type": "ENVIGCPSet",
+            "direction": "INPUT",
+            "required": true,
+            "description": "A set of ground control points (GCPs)."
+        }, 
+        {
+            "name": "OUTPUT_RASTER",
+            "display_name": "Output Raster",
+            "type": "ENVIRaster",
+            "direction": "OUTPUT",
+            "description": "The input raster with new RPCs set",
+            "required": true
+        },
+        {
+            "name": "OUTPUT_REPORT_URI",
+            "display_name": "Save Report Results",
+            "type": "ENVIURI",
+            "auto_extension": ".json",
+            "direction": "OUTPUT",
+            "required": false,
+            "fold_case": true,
+            "description": "This is a reference to the output Report."
+        },        
+        {
+            "name": "OUTPUT_TASK_REPORT",
+            "display_name": "Output Report Info",
+            "type": "ENVITaskInfo",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to report hash" 
+        } 
+    ]
+}

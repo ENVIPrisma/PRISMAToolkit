@@ -1,0 +1,74 @@
+{
+    "name": "ENVIPrismaReprojectGLT",
+    "base_class": "ENVIAbortableTaskFromProcedure",
+    "routine": "ENVIPrismaReprojectGLT",
+    "display_name": "PRISMA Reproject using GLT",
+    "description": "Reproject Prisma using GLT (Geographic Lookup Tables)",
+    "schema": "envitask_3.3",
+    "tags": ["ENVI", "Utilities"],
+    "revision": "1.0.0",
+    "commute_on_downsample": "No",
+    "commute_on_subset": "No",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "display_name": "Input PRISMA Raster",
+            "type": "ENVIRaster",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the raster that contains the VNIR bands."
+        },
+        {
+            "name": "INPUT_URI",
+            "display_name": "Input PRISMA [.he5]",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the input HDF5 file that contains the geometry information."
+        },
+        {
+            "name": "isPanchromatic",
+            "display_name": "Panchromatic",
+            "type": "Boolean",
+            "direction": "INPUT",
+            "required": false,
+            "description": "This is a hidden parameter to set the morphological filter to binary.",
+            "default": false
+        },
+        {
+            "name": "INTERPOLATION_METHOD",
+            "display_name": "Interpolation Method",
+            "type": "String",
+            "direction": "INPUT",
+            "required": false,
+            "description": "The GLT algorithm establishes a regular output grid and finds the best location for each source image pixel. Any output grid point for which a source pixel could not be found will be filled using the nearest valid neighbor or with a distance-weighted average of the surrounding valid values. The default interpolation method for reprojection is a distance-weighted average, which creates an image with the fewest visible interpolation artifacts. Set the INTERPOLATION_METHOD property to 1 to perform nearest-neighbor interpolation in cases where the set of valid pixel values should not be modified (for example, when values represent the integral values of a classification).",
+						"default": "Distance Weighted",
+            "choice_list": {
+								"Distance Weighted": 0,
+                "Nearest Neighbor": 1
+            },
+            "fold_case": true
+        },
+        {
+            "name": "OUTPUT_RASTER_URI",
+            "keyword": "OUTPUT_URI",
+            "display_name": "Output Raster URI",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify a string with the fully qualified filename and path of the associated OUTPUT_RASTER. If you do not specify this property, or set it to an exclamation symbol (!), a temporary file will be created.",
+            "auto_extension": ".dat",
+            "fold_case": true,
+            "is_temporary": true
+        },
+        {
+            "name": "OUTPUT_RASTER",
+            "display_name": "Output Raster",
+            "type": "ENVIRaster",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to the output raster of filetype ENVI.",
+            "uri_param": "OUTPUT_RASTER_URI"
+        }
+    ]
+}

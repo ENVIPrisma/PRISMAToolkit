@@ -1,0 +1,120 @@
+{
+    "name": "Prisma_Get_Sentinel2_Reference",
+    "base_class": "ENVIAbortableTaskFromProcedure",
+    "routine": "Prisma_Get_Sentinel2_Reference",
+    "display_name": "Discover and download Sentinel-2 data overlapping PRISMA scene",
+    "description": "Discover and download Sentinel-2 data overlapping PRISMA scene.",
+    "schema": "envitask_3.2",
+    "revision": "1.0.0",
+    "parameters": [
+        {
+            "name": "INPUT_FILENAME",
+            "keyword": "INPUT_FILENAME",
+            "display_name": "Input Prima [.he5]",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the input PRISMA file."
+        },
+				{
+            "name": "CLOUD_COVERAGE",
+						"keyword": "CLOUD_COVERAGE",
+            "display_name": "Cloud Coverage",
+            "type": "DOUBLE",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Max(%) Cloud coverage allowed in the search of Sentinel-2 image",
+            "default": 30.0
+        },
+	    	{
+            "name": "CLEARSKY_THRESHOLD",
+						"keyword": "CLEARSKY_THRESHOLD",
+            "display_name": "Percentage of clear Sky",
+            "type": "DOUBLE",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Percentage of clear sky over Prisma image",
+            "default": 65.0
+      	},
+				{
+            "name": "FORCE_DOWNLOAD",
+            "display_name": "Force Download Reference Image",
+            "type": "Boolean",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Force Download of Reference Image.",
+            "default": false
+        },
+				{
+            "name": "ITERATIONS",
+            "display_name": "Iterations",
+            "type": "UInt",
+            "direction": "INPUT",
+            "required": false,
+            "description": "The maximum iterations to perform.  If the change threshold percent is not met before the maximum number of iterations is reached, the classification completes.",
+			      "min": 3,
+			      "max": 25,
+            "default": 10
+        },
+				{
+            "name": "DOWNLOAD_DIRECTORY",
+            "display_name": "Download Directory",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Directory in which the resulting of download will be saved. If set to an asterisk (*), the output rasters will be virtual. They will not be written to disk, and the directory will not be created.",
+            "fold_case": true,
+            "is_directory": true
+        },
+        {
+            "name": "SCIHUB_USERNAME",
+            "display_name": "SciHub username",
+            "type": "String",
+            "direction": "INPUT",
+            "required": false,
+            "description": "SciHub Username.",
+            "default": "hgsi_italy",
+            "fold_case": true
+        },
+		    {
+            "name": "SCIHUB_PASSWORD",
+            "display_name": "SciHub password",
+            "type": "String",
+            "direction": "INPUT",
+            "required": false,
+            "description": "SciHub password.",
+            "default": "!@LasciamiEntrare21",
+            "fold_case": true
+        },
+        {
+            "name": "OUTPUT_RASTER_URI",
+            "keyword": "OUT_FILENAME",
+            "display_name": "Output Raster URI",
+            "type": "ENVIVirtualizableURI",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify a string with the fully qualified filename and path to export the associated OUTPUT_RASTER. If you set this property to an asterisk symbol (*), the output raster will be virtual and not written to disk. If you do not specify this property, or set it to an exclamation symbol (!), a temporary file will be created.",
+            "auto_extension": ".dat",
+            "fold_case": true,
+            "is_temporary": true
+        },
+        {
+            "name": "OUTPUT_RASTER",
+            "display_name": "Output Raster",
+            "type": "ENVIRaster",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to the output mosaic raster of filetype ENVI.",
+            "uri_param": "OUTPUT_RASTER_URI"
+        },
+				{
+            "name": "OUTPUT_PRISMA",
+            "display_name": "Output Prisma Raster",
+            "type": "ENVIRasterArray",
+            "dimensions": "[*]",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to the output mosaic raster of filetype ENVI."
+        }
+    ]
+}

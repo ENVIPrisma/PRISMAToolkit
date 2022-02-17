@@ -1,0 +1,170 @@
+{
+    "name": "Sentinel2EsaHubQueryBoundBox",
+    "base_class": "ENVIAbortableTaskFromProcedure",
+    "routine": "ENVI_SentinelHubQuery",
+    "display_name": "Query Sentinel-2 ESAHUB archive with Bounding Box",
+    "description": "This task returns a list of objects SentinelHub Objecyts",
+    "schema": "envitask_3.2",
+    "revision": "1.0.0",
+    "parameters": [  
+    	{
+            "name": "HUB_LOGIN",
+            "display_name": "EsaHub Credentials",
+            "type": "ORDEREDHASH",
+            "direction": "INPUT",
+            "required": true,
+            "description": "A hash of key-value pairs indicating login details.",
+            "default": {
+                "fold_case": true,
+                "elements": {
+                    "USERNAME": {
+                        "type": "STRING",
+                        "dehydratedForm": "sgagliano"
+                    },
+                    "PASSWORD": {
+                        "type": "STRING",
+                        "dehydratedForm": "123pippo"
+                    },
+                    "PROTOCOL": {
+                        "type": "STRING",
+                        "dehydratedForm": "https"
+                    },
+                    "HOST": {
+                        "type": "STRING",
+                        "dehydratedForm": "scihub.copernicus.eu"
+                    }
+                }
+        	}
+        },
+        {
+            "name": "SUB_RECT",
+            "display_name": "Bounding Box",
+            "type": "DoubleArray",
+            "dimensions": "[4]",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Set this property to a four-element array expressing the spatial range for the query. The array is of the form: [minLon, minLat, maxLon, maxLat] in geographic coordinates."
+        },
+        {
+            "name": "AOI_OPTION",
+            "display_name": "AOI Match Option",
+            "type": "String",
+            "direction": "INPUT",
+            "required": true,
+            "default": "Intersects",
+            "description": "Geo type query.",
+            "choice_list": [
+                "Intersects",
+                "Contains"         
+            ],
+            "fold_case": true
+        },
+        {
+            "name": "SATELLITE_NAME",
+            "display_name": "Satellite Name",
+            "type": "String",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Sensor query.",
+            "default":"Sentinel-2", 
+            "hidden": true
+        },
+        {
+            "name": "PLATFORM_NAME",
+            "display_name": "Platform Name",
+            "type": "String",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Sensor platform",
+            "choice_list": [
+                "S2A_*",
+                "S2B_*"
+            ],
+            "fold_case": true
+        },
+        {
+            "name": "PRODUCT_TYPE",
+            "display_name": "Product Type",
+            "type": "String",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Sensor query.",
+            "choice_list": [
+                "S2MSI1C",
+                "S2MSI2A",
+                "S2MSI2Ap"
+            ],
+            "fold_case": true
+        },
+        {
+            "name": "CLOUD_COVERAGE",
+            "display_name": "Cloud Coverage %",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": false,
+            "default": 10,
+            "min": 5,
+            "description": "Specify cloud percentage cover."
+        },
+        {
+            "name": "SENSING_DATE_START",
+            "display_name": "Sensing Time Start",
+            "type": "String",
+            "direction": "INPUT",
+            "required": true,
+            "default": "NOW-30DAYS",    
+            "description": "Data acquisition time string that conforms to the ISO-8601 standard..",
+            "fold_case": true
+        },
+        {
+            "name": "SENSING_DATE_STOP",
+            "display_name": "Sensing Time Stop",
+            "type": "String",
+            "direction": "INPUT",
+            "required": true,
+            "default": "NOW",  
+            "description": "Data acquisition time string that conforms to the ISO-8601 standard..",
+            "fold_case": true
+        },
+        {
+            "name": "OUTPUT_PRODUCT_NAMES",
+            "display_name": "Output Product Names",
+            "type": "StringArray",
+            "dimensions": "[*]",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to the output String."
+        },
+        {
+            "name": "OUTPUT_URI",
+            "display_name": "Save Query Results",
+            "type": "ENVIURI",
+            "auto_extension": ".json",
+            "direction": "INPUT",
+            "required": false,
+            "fold_case": true,
+            "description": "This is a reference to the output IDL_SentinelHubDataArray."
+        },        
+        {
+            "name": "OUTPUT_QUERY",
+            "keyword": "OUTPUT_URI",
+            "display_name": "Output Query Info",
+            "type": "IDL_SentinelHubDataArray",
+            "dimensions": "[*]",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to the output IDL_SentinelHubData.",
+            "uri_param": "OUTPUT_URI"   
+        },
+        {
+            "name": "SHOW_MESSAGE",
+            "keyword": "SHOW_MESSAGE",
+            "display_name": "Show Result Message",
+            "type": "Boolean",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Ask to the user if want the message to inform about the query result",
+            "default": false
+        }    
+    ]
+}

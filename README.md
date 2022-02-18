@@ -1,5 +1,5 @@
 # PRISMAToolkit
-PRISMA Toolkit for ENVI
+PRISMA Toolkit for ENVI: to install the software unzip the latest release (i.e. ENVIToolkit_PRISMA._v1.0.zip) on your ENVI installation folder.
 
 ENVI PRISMA Toolkit contains the following 5 tasks:
 * Refine RPCs (HDF-EOS5)
@@ -12,4 +12,6 @@ ENVI PRISMA Toolkit contains the following 5 tasks:
   - Reprojects the PRISMA dataset using the Geographic Lookup Table
 * Inherits RPCs
   - Copy RPC coefficients from an ENVI Raster
+
+![image](https://user-images.githubusercontent.com/41050589/154694925-3b06b41f-0145-4ae4-90be-c08e8ebe88b1.png)
 

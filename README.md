@@ -20,4 +20,4 @@ After inslattation you will be able to see the new task on ENVI Toolbox, as belo
 ![image](https://user-images.githubusercontent.com/41050589/154697039-e82d1b48-bc08-4752-9eb4-a716b0df1a0d.png)
 
 ## PRISMA MISSION
-Further information about PRISMA MISSION can be found in ASI internet site [PRISMA MISSION] (https://www.asi.it/en/earth-science/prisma/)
+Further information can be found in ASI internet site [PRISMA MISSION](https://www.asi.it/en/earth-science/prisma/)

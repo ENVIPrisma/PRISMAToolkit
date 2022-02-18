@@ -6,6 +6,13 @@
 		{
             "name": "HUB_LOGIN",
             "type": "IDLOrderedHash_UI"
+        },
+        {
+            "name": "DOWNLOAD_PRODUCT",
+            "type": "IDLDropList_UI",
+            "keywords": {
+              "HELP_LABELS": ["Full Product (*.zip)","TCI only for Sentinel-2 (*.jp2) ","QuickLook geo image (*.jpg,*.hdr)"]
+            }
         }
     ]
 }

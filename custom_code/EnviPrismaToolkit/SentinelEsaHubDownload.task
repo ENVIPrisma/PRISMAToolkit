@@ -19,11 +19,11 @@
                 "elements": {
                     "USERNAME": {
                         "type": "STRING",
-                        "dehydratedForm": "sgagliano"
+                        "dehydratedForm": ""
                     },
                     "PASSWORD": {
                         "type": "STRING",
-                        "dehydratedForm": "123pippo"
+                        "dehydratedForm": ""
                     }
                  }
              }
@@ -39,19 +39,24 @@
             "description": "Specify the input json file list of SentineHubData."
         },
         {
-            "name": "PREVIEW_ONLY",
-            "keyword": "PREVIEW_ONLY",
-            "display_name": "Only Preview",
-            "type": "Boolean",
+            "name": "DOWNLOAD_PRODUCT",
+            "display_name": "Download Product",
+            "type": "String",
             "direction": "INPUT",
             "required": true,
-            "description": "Specify.",
-            "default": false
-        },    
+            "description": "Specify the product avilable to download.",            
+            "choice_list": {
+                "Full Product":0,
+                "Sentinel-2 TCI":1,
+                "QuickLook":2
+            },
+			"default":"Full Product",
+            "fold_case": true
+        },		
         {
             "name": "UNZIP_PRODUCT",
             "keyword": "UNZIP_PRODUCT",
-            "display_name": "Uncompress (.zip)",
+            "display_name": "Unzip Full Product",
             "type": "Boolean",
             "direction": "INPUT",
             "required": false,

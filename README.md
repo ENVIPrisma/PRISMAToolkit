@@ -17,11 +17,11 @@ ENVI PRISMA Toolkit contains the following 5 tasks:
 1. On GitHub.com, navigate to the main page of the repository.
 2. To the right of the list of files, click Releases.
 
-![image](https://user-images.githubusercontent.com/41050589/157260447-e8198929-eccd-4810-840b-a72527d07151.png)
+![image](https://user-images.githubusercontent.com/41050589/157262044-1c72d164-fd9a-4783-a1e7-e3fc5a48ee73.png)
 
 3. Click on the latest ENVIToolkit archive (i.e. ENVIToolkit_PRISMA_v1.0.zip) 
 
-![image](https://user-images.githubusercontent.com/41050589/157260023-74629f87-6e9b-4904-8dfa-a1153f720a42.png)
+![image](https://user-images.githubusercontent.com/41050589/157260447-e8198929-eccd-4810-840b-a72527d07151.png)
 
 
 

@@ -19,11 +19,11 @@
                 "elements": {
                     "USERNAME": {
                         "type": "STRING",
-                        "dehydratedForm": "sgagliano"
+                        "dehydratedForm": ""
                     },
                     "PASSWORD": {
                         "type": "STRING",
-                        "dehydratedForm": "123pippo"
+                        "dehydratedForm": ""
                     },
                     "PROTOCOL": {
                         "type": "STRING",

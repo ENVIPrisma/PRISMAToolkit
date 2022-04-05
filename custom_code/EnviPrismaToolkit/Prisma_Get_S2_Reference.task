@@ -72,7 +72,7 @@
             "direction": "INPUT",
             "required": false,
             "description": "SciHub Username.",
-            "default": "hgsi_italy",
+            "default": "",
             "fold_case": true
         },
 		    {
@@ -82,7 +82,7 @@
             "direction": "INPUT",
             "required": false,
             "description": "SciHub password.",
-            "default": "!@LasciamiEntrare21",
+            "default": "",
             "fold_case": true
         },
         {

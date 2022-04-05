@@ -50,7 +50,7 @@
                 "Sentinel-2 TCI":1,
                 "QuickLook":2
             },
-			"default":"Full Product",
+			      "default":"Full Product",
             "fold_case": true
         },		
         {

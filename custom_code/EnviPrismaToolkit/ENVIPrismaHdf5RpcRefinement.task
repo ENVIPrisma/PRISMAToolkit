@@ -59,7 +59,7 @@
             "required": false,
             "description": "SciHub Username.",
             "hidden": false,
-			"default": "",
+			      "default": "",
             "fold_case": true
         },
         {
@@ -70,7 +70,7 @@
             "required": false,
             "description": "SciHub password.",
             "hidden": false,
-			"default": "",
+			      "default": "",
             "fold_case": true
         },
         {

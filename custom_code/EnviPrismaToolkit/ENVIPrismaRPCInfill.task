@@ -27,12 +27,12 @@
             "description": "Specify the input HDF5 file that contains the geometry information."
         },
 		    {
-					"name": "OUTPUT_RASTER",
-					"display_name": "Output Raster",
-					"type": "ENVIRaster",
-					"direction": "OUTPUT",
-					"required": true,
-					"description": "This is a reference to the output raster."
+						"name": "OUTPUT_RASTER",
+						"display_name": "Output Raster",
+						"type": "ENVIRaster",
+						"direction": "OUTPUT",
+						"required": true,
+						"description": "This is a reference to the output raster."
 				}
     ]
 }

@@ -14,13 +14,9 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- 
-- 
-- 
+- Task Prisma_Get_Sentinel2_Reference.task included in Prisma_Get_S2_Reference.task
 
 ### Fixed
 
-- 
-- 
-
+- Sentinel-2 download 
 

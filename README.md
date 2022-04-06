@@ -15,7 +15,7 @@ ENVI PRISMA Toolkit contains the following 5 tasks:
 
 ## Download Instructions
 1. On GitHub.com, navigate to the main page of the repository.
-2. To the right of the list of files, click Releases.
+2. To the right of the list of files, **click Releases**.
 
 ![image](https://user-images.githubusercontent.com/41050589/157262044-1c72d164-fd9a-4783-a1e7-e3fc5a48ee73.png)
 
@@ -25,11 +25,12 @@ ENVI PRISMA Toolkit contains the following 5 tasks:
 
 
 ## Installation Instructions (option 1)
-Before starting with a new installation, remove EnviPrismaToolkit folder from ENVI custom_code folder ((i.e. C:\Program Files\Harris\ENVI56\custom_code\EnviPrismaToolkit). 
+Before starting with a new installation, remove EnviPrismaToolkit folder from ENVI custom_code folder (i.e. C:\Program Files\Harris\ENVI56\custom_code\EnviPrismaToolkit). 
 To install the software unzip the latest release (i.e. ENVIToolkit_PRISMA_v1.0.zip) on your ENVI installation folder (i.e. C:\Program Files\Harris\ENVI56).
 CHANGELOG.md contains a chronologically ordered list of notable changes for each version of the project. Check CHANGELOG.md to identify the latest release. 
 
 ## Installation Instructions (option 2)
+Before starting with a new installation, remove EnviPrismaToolkit folder from ENVI custom_code folder (i.e. C:\Program Files\Harris\ENVI56\custom_code\EnviPrismaToolkit). 
 - Unzip the latest release (i.e. ENVIToolkit_PRISMA_v1.0.zip) in a temporary folder (i.e C:\tmp\ENVIToolkit_PRISMA_v1.0).
 - Copy the three extracted folder (custom_code, extensions, save) in ENVI installation folder (i.e. C:\Program Files\Harris\ENVI56)
 

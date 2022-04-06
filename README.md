@@ -26,6 +26,7 @@ ENVI PRISMA Toolkit contains the following 5 tasks:
 
 ## Installation Instructions (option 1)
 To install the software unzip the latest release (i.e. ENVIToolkit_PRISMA_v1.0.zip) on your ENVI installation folder (i.e. C:\Program Files\Harris\ENVI56).
+CHANGELOG.md contains a chronologically ordered list of notable changes for each version of the project. Check CHANGELOG.md to identify the latest release. 
 
 ## Installation Instructions (option 2)
 - Unzip the latest release (i.e. ENVIToolkit_PRISMA_v1.0.zip) in a temporary folder (i.e C:\tmp\ENVIToolkit_PRISMA_v1.0).
